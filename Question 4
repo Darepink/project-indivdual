@@ -1,0 +1,11 @@
+(4) Methods and plan
+
+Since the outcome is binary, I will leverage logistic regression to estimate subscription to a newsletter.
+This will allow me to model the probability of `subscribe = TRUE` from features describing the players and yields an easy to interpret odds ratios.
+
+Some key assumptions are having independent observations, a reasonable functional form for the numeric predictors (specifically, I will assume roughly linear effects of both `Age` and `played_hours` on the log-odds), and not having extreme multicollinearity issues.
+There are limitations associated with logistic regression, such as sensitivity to outliers and that the linear decision boundary does not account for more complex nonlinear interactions.
+
+For this analysis, I will randomly split the data into a training set (70%) and a held-out test set (30%).
+The split will be stratified by `subscribe` to ensure that the training data maintains the overall rate of subscriptions.
+On the training set, I will utilize a k-fold cross-validation scheme to evaluate models (e.g. with or without `gender` as a predictor, or transformed `played_hours`) based on the metrics of accuracy and AUC, and later evaluate the final selected model once on the held-out test set.
