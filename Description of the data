@@ -1,0 +1,12 @@
+## (1) Description of the data  
+
+There are two linked datasets being used in this project. 
+The dataset `players.csv` has 196 rows (one per player) and consists of 7 variables, the dataset `sessions.csv` has 1,535 rows (one per play session) and consists of 5 variables.
+Both datasets are linked by a common key: the `hashedEmail`. 
+In the dataset `players.csv`, there are two quantitative variables, total `played_hours` on the server, and self-reported `Age`. 
+The means of those variables are 5.85 hours and 21.14 years of age (age is missing for 2 players). There are 3 categorical variables; self reported experience level, self reported gender identity, and a yes/no variable if the participant subscribed to the newsletter for the study (`subscribe`, TRUE/FALSE). 
+Names are just labels and will not be used for modelling purposes.  
+The dataset `sessions.csv` contains the start and end times of login periods as date time strings (and also as Unix timestamps in milliseconds). 
+There are no end times recorded for 2 sessions (meaning participants logged in and did not explicitly record the end of the session). 
+Only 125 players (of the 196 total) have at least 1 recorded session. 
+There are potential issues with the data in terms of self-selection by the players, error in self reported variables, inconsistencies related to time zone, and inconsistencies related to how sessions were recorded even with the primary times being reflected by the timestamps.
