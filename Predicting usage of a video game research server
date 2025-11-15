@@ -1,0 +1,14 @@
+library(tidyverse)
+players  <- read_csv("players.csv")
+sessions <- read_csv("sessions.csv")
+players <- players |>
+  mutate(
+    experience = factor(
+      experience,
+      levels = c("Beginner", "Amateur", "Regular", "Veteran", "Pro")
+    ),
+    gender = factor(gender),
+    subscribe = as.logical(subscribe)
+  )
+glimpse(players)
+glimpse(sessions)
