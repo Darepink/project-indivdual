@@ -1,0 +1,58 @@
+players_means <- players |>
+  summarise(
+    mean_played_hours = round(mean(played_hours, na.rm = TRUE), 2),
+    mean_age          = round(mean(Age,          na.rm = TRUE), 2)
+  )
+
+players_means
+
+players |>
+  summarise(
+    n_players       = n(),
+    prop_subscribed = round(mean(subscribe, na.rm = TRUE), 3)
+  )
+
+players |>
+  group_by(subscribe) |>
+  summarise(
+    mean_played_hours = mean(played_hours, na.rm = TRUE),
+    mean_age          = mean(Age,          na.rm = TRUE)
+  )
+
+players_prop_exp <- players |>
+  count(experience, subscribe) |>
+  group_by(experience) |>
+  mutate(prop = n / sum(n))
+
+players_prop_exp |>
+  ggplot(aes(x = experience, y = prop, fill = subscribe)) +
+  geom_col(position = "fill") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(
+    title = "Newsletter subscription rate by experience level",
+    x = "Experience level",
+    y = "Proportion of players",
+    fill = "Subscribed"
+  ) +
+  theme_minimal()
+
+players |>
+  ggplot(aes(x = subscribe, y = played_hours)) +
+  geom_boxplot() +
+  coord_cartesian(ylim = c(0, 30)) +  # trim to show typical range
+  labs(
+    title = "Distribution of played hours by newsletter subscription",
+    x = "Subscribed to newsletter",
+    y = "Total hours played on server"
+  ) +
+  theme_minimal()
+
+players |>
+  ggplot(aes(x = Age)) +
+  geom_histogram(binwidth = 2, boundary = 0, closed = "left") +
+  labs(
+    title = "Age distribution of players",
+    x = "Age (years)",
+    y = "Count"
+  ) +
+  theme_minimal()
