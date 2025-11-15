@@ -1,4 +1,4 @@
-## (1) Description of the data  
+(1) Description of the data  
 
 There are two linked datasets being used in this project. 
 The dataset `players.csv` has 196 rows (one per player) and consists of 7 variables, the dataset `sessions.csv` has 1,535 rows (one per play session) and consists of 5 variables.
