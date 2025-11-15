@@ -1,0 +1,8 @@
+(2) General and specific inquires
+
+I want to answer General Question 1: what player characteristics and behaviours predict subscribing to the game related newsletter?
+
+My questions is: Can player experience level, total time spent on the server, age, and gender predict whether a player subscribes to the Minecraft research newsletter? 
+
+The response variable is `subscribe` (TRUE/FALSE) from `players.csv`. The explanatory variables will include `experience`, `played_hours`, `Age`, and `gender` to start. 
+For this individual stage I will stick to mainly working with `players.csv`, I may integrate some session based behaviour predictors at a later stage.
