@@ -12,3 +12,22 @@ players <- players |>
   )
 glimpse(players)
 glimpse(sessions)
+
+players_variables <- tibble::tribble(
+  ~variable,      ~type,                     ~description,
+  "experience",   "categorical (ordinal)",   "Self-reported Minecraft experience level (Beginner–Pro)",
+  "subscribe",    "binary (logical)",        "Whether the player subscribed to the game-related newsletter",
+  "hashedEmail",  "identifier",              "Hashed email; joins players to sessions",
+  "played_hours", "numeric (continuous)",    "Total reported hours played on the research server (hours)",
+  "name",         "string",                  "Player’s display name (label only)",
+  "gender",       "categorical",             "Self-identified gender",
+  "Age",          "numeric (continuous)",    "Self-reported age in years"
+)
+
+players_variables
+
+summary(players)
+colSums(is.na(players))        
+
+summary(sessions)
+length(unique(sessions$hashedEmail))
